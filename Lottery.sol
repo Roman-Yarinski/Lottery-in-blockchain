@@ -15,7 +15,7 @@ contract Lottery is Ownable {
   
   address public lastWiner;                                                                 // Last winner
   
-    struct Member {
+  struct Member {
     address addr;                                                                           // Address of member
     uint256 time;                                                                           // The time of ticket buying
     uint256 transfer;                                                                       // Tranfer value
