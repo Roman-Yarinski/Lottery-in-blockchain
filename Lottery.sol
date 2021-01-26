@@ -112,6 +112,8 @@ contract Lottery is Ownable {
     }
     
     function setMaxPlayers(uint256 _maxPlayers) public {
+        require(members.length == 0);
+        
         maxPlayers = _maxPlayers;
     }
     
