@@ -17,4 +17,9 @@ function confertToEther(weiValue) {
   return `${weiValue} Ethers`;
 }
 
-module.exports = { convertTime, convertDuration, confertToEther };
+function confertToWei(etherValue) {
+  etherValue = Web3.utils.fromEther(etherValue); 
+  return etherValue;
+}
+
+module.exports = { convertTime, convertDuration, confertToEther, confertToWei };
