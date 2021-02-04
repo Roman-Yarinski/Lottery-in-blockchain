@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const cors = require("cors");
 
-const { payWinning, getAllInfo,  getMembers, getMembersAdress, toggleStateOfContract, BuyTicket, restart } = require("./contract.js");
+const { payWinning, getAllInfo,  getMembers, getMembersAdress, toggleStateOfContract, restart } = require("./contract.js");
 
 server = express();
 
