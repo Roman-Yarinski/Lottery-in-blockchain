@@ -1,13 +1,16 @@
-let btn = document.querySelector(".buy");
-let info = document.querySelector(".info");
+const btn = document.querySelector(".buy");
+const info = document.querySelector(".info");
+const viweAccount = document.querySelector(".account");
 
 let contract;
 let web3js;
+let account;
 
-// accju
+// chenge addr 
 
 window.onload = () => {
   getWeb3();
+  initAccount();
   startApp();
   getAllData();
 }
@@ -61,6 +64,18 @@ const getAllData = async () => {
     info.innerHTML = `${str}`;
 }
 
+ethereum.on('accountsChanged', (accounts) => {
+  initAccount(accounts);
+});
+
+const initAccount = async(accounts) => {
+  if(!accounts) {
+    accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+    account = accounts[0];
+  } else account = accounts[0];
+  viweAccount.innerHTML = `Account: ${account}`; 
+} 
+
 btn.onclick = async e => {
     try {
       e.preventDefault();
@@ -69,8 +84,6 @@ btn.onclick = async e => {
         console.log("Invalid value");
         alert("The ticket price cannot be less than 0 and not a number");
       } else {
-        const accounts = await ethereum.enable();
-        const account = accounts[0];
         const res = await BuyTicket(account, value);
         if(res) {
           alert("You buy 1 ticket");
