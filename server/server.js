@@ -20,7 +20,6 @@ server.post('/', async (req, res) => {
 
 
 server.get("/allData", async (req, res) => {
-    console.log(req);
     res.send(await getAllInfo());
 });
 
